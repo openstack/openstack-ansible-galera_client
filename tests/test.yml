@@ -23,8 +23,6 @@
       galera_root_user: root
       galera_client_drop_config_file: false
   post_tasks:
-    - name: Check that the xtrabackup command is present
-      command: which xtrabackup
     - name: Check that the mysql command is present
       command: which mysql
 
@@ -38,8 +36,6 @@
       galera_root_user: root
       galera_client_drop_config_file: true
   post_tasks:
-    - name: Check that the xtrabackup command is present
-      command: which xtrabackup
     - name: Check that the mysql command is present
       command: which mysql
     - name: Check .my.cnf exists

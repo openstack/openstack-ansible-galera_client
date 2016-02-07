@@ -3,7 +3,7 @@ OpenStack Galera Client
 :tags: openstack, galera, client, cloud, ansible
 :category: \*nix
 
-Role for the installation of the mariadb and xtrabackup clients used to interact with and manage a galera cluster.
+Role for the installation of mariadb clients used to interact with and manage a galera cluster.
 
 Example Ansible play
 
