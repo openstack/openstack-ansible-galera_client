@@ -13,6 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+## APT Cache Options
+cache_timeout: 600
+
 # Default galera connection address
 galera_address: 127.0.0.1
 galera_root_user: root
