@@ -17,7 +17,7 @@
 galera_address: 127.0.0.1
 galera_root_user: root
 
-galera_client_drop_config_file: "{{ inventory_hostname in groups['galera_all'] or inventory_hostname in groups['utility_all'] }}"
+galera_client_drop_config_file: false
 
 galera_pinned_packages: []
 
