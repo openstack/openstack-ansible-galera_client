@@ -25,6 +25,14 @@
   post_tasks:
     - name: Check that the mysql command is present
       command: which mysql
+    - name: Check .my.cnf existence
+      stat:
+        path: /root/.my.cnf
+      register: mycnf
+    - name: Client config file .my.cnf should not exist
+      assert:
+        that:
+          - "not mycnf.stat.exists"
 
 - name: Playbook for role testing
   hosts: localhost
@@ -38,11 +46,11 @@
   post_tasks:
     - name: Check that the mysql command is present
       command: which mysql
-    - name: Check .my.cnf exists
+    - name: Check .my.cnf existence
       stat:
         path: /root/.my.cnf
       register: mycnf
-    - name: Check role functions
+    - name: Client config file .my.cnf should exist
       assert:
         that:
           - "mycnf.stat.exists"
