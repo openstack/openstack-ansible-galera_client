@@ -33,6 +33,8 @@ galera_client_drop_config_file: "{{ inventory_hostname in groups['galera_all'] o
 galera_client_apt_repo_url: "https://mirror.rackspace.com/mariadb/repo/10.0/ubuntu"
 galera_client_apt_repo: "deb {{ galera_client_apt_repo_url }} {{ ansible_distribution_release }} main"
 
+galera_apt_pinned_packages: [{ package: "*", release: MariaDB, priority: "1001" }]
+
 galera_client_pip_packages:
   - MySQL-python
   - python-memcached
