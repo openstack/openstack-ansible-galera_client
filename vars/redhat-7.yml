@@ -1,0 +1,42 @@
+---
+# Copyright 2016, Rackspace US, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+galera_client_yum_repo_url: "http://yum.mariadb.org/10.0/centos/7/x86_64"
+galera_client_repo:
+  state: "present"
+  name: MariaDB
+  description: "MariaDB Repo"
+  file: MariaDB
+  baseurl: "{{ galera_client_yum_repo_url }}"
+  gpgkey: "https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
+
+galera_client_packages:
+  - bzip2-devel
+  - gcc
+  - gnupg2
+  - libaio
+  - libstdc++
+  - libgcc
+  - libgcrypt
+  - MariaDB-client
+  - MariaDB-devel
+  - openssl-devel
+  - python-devel
+
+# Galera GPG Keys
+galera_client_gpg_keys:
+  - key_name: 'RPM-GPG-KEY-MariaDB'
+    keyserver: 'https://yum.mariadb.org'
+    fallback_keyserver: 'https://yum.mariadb.org'

@@ -16,6 +16,19 @@
 - name: Playbook for role testing
   hosts: localhost
   connection: local
+  pre_tasks:
+    # These directories are removed because the gate job has them in
+    #  the base image.
+    - name: Remove local mysql directories if they exist
+      file:
+        path: "{{ item.path }}"
+        state: "absent"
+      with_items:
+        - { path: "/etc/mysql" }
+        - { path: "/etc/mysql/conf.d" }
+        - { path: "/usr/lib/galera" }
+        - { path: "/etc/my.cnf.d" }
+        - { path: "/etc/my.cnf" }
   roles:
     - role: "{{ rolename | basename }}"
       galera_address: "10.0.0.1"
@@ -37,6 +50,17 @@
 - name: Playbook for role testing
   hosts: localhost
   connection: local
+  pre_tasks:
+    - name: Remove local mysql directories if they exist
+      file:
+        path: "{{ item.path }}"
+        state: "absent"
+      with_items:
+        - { path: "/etc/mysql" }
+        - { path: "/etc/mysql/conf.d" }
+        - { path: "/usr/lib/galera" }
+        - { path: "/etc/my.cnf.d" }
+        - { path: "/etc/my.cnf" }
   roles:
     - role: "{{ rolename | basename }}"
       galera_address: "10.0.0.1"

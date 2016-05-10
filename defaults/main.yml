@@ -13,25 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## APT Cache Options
-cache_timeout: 600
-
 # Default galera connection address
 galera_address: 127.0.0.1
 galera_root_user: root
 
 galera_client_drop_config_file: "{{ inventory_hostname in groups['galera_all'] or inventory_hostname in groups['utility_all'] }}"
 
-# Repositories
-galera_client_apt_repo_url: "https://mirror.rackspace.com/mariadb/repo/10.0/ubuntu"
-galera_client_apt_repo: "deb {{ galera_client_apt_repo_url }} {{ ansible_distribution_release }} main"
-
-galera_apt_pinned_packages: [{ package: "*", release: MariaDB, priority: "1001" }]
+galera_pinned_packages: []
 
 galera_client_pip_packages:
   - MySQL-python
-  - python-memcached
-  - pycrypto
+
+galera_client_fatal_deprecations: false
 
 ## Tunable overrides
 galera_client_my_cnf_overrides: {}

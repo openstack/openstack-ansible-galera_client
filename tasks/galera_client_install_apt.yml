@@ -27,8 +27,63 @@
   apt:
     update_cache: yes
   when: >
-    "ansible_date_time.epoch|float - apt_cache_stat.stat.mtime > {{cache_timeout}}" or
-    add_repo | changed
+    "ansible_date_time.epoch|float - apt_cache_stat.stat.mtime > {{cache_timeout}}"
+  tags:
+    - galera-client-apt-packages
+
+- name: Ensure host can talk to HTTPS apt repos
+  apt:
+    pkg: "apt-transport-https"
+    state: latest
+    update_cache: yes
+  tags:
+    - galera-client-apt-packages
+
+- name: Add galera apt-keys
+  apt_key:
+    id: "{{ item.hash_id }}"
+    keyserver: "{{ item.keyserver | default(omit) }}"
+    data: "{{ item.data | default(omit) }}"
+    url: "{{ item.url | default(omit) }}"
+    state: "present"
+  with_items: galera_client_gpg_keys
+  register: add_keys
+  until: add_keys|success
+  retries: 5
+  delay: 2
+  tags:
+    - galera-client-apt-keys
+
+- name: Add galera apt-keys using fallback source
+  apt_key:
+    id: "{{ item.hash_id }}"
+    keyserver: "{{ item.fallback_keyserver | default(omit) }}"
+    url: "{{ item.fallback_url | default(omit) }}"
+    state: "present"
+  register: add_keys_fallback
+  until: add_keys_fallback | success
+  retries: 5
+  delay: 2
+  with_items: galera_client_gpg_keys
+  when: add_keys|failed and (item.fallback_keyserver is defined or item.fallback_url is defined)
+  tags:
+    - galera-client-apt-keys
+
+- name: Add galera repo(s)
+  apt_repository:
+    repo: "{{ galera_client_repo }}"
+    state: present
+  register: add_repo
+  until: add_repo | success
+  retries: 5
+  delay: 2
+  tags:
+    - galera-client-repos
+
+- name: Update apt if needed
+  apt:
+    update_cache: yes
+  when: add_repo | changed
   tags:
     - galera-client-apt-packages
 
@@ -37,9 +92,9 @@
     pkg: "{{ item }}"
     state: latest
   register: install_packages
-  until: install_packages|success
+  until: install_packages | success
   retries: 5
   delay: 2
-  with_items: galera_client_apt_packages
+  with_items: galera_client_packages
   tags:
     - galera-client-apt-packages

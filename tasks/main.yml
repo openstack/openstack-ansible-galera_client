@@ -18,10 +18,10 @@
   with_first_found:
     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
     - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
   tags:
     - always
 
-- include: galera_client_pre_install.yml
 - include: galera_client_install.yml
 - include: galera_client_post_install.yml
