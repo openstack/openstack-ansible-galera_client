@@ -23,6 +23,7 @@ galera_client_apt_packages:
   - libssl-dev
   - libstdc++6
   - mariadb-client
+  - mariadb-client-core-10.0
 
 # Galera GPG Keys
 galera_client_gpg_keys:
