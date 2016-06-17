@@ -34,6 +34,6 @@
   until: install_packages|success
   retries: 5
   delay: 2
-  with_items: galera_client_pip_packages
+  with_items: "{{ galera_client_pip_packages }}"
   tags:
     - galera-client-pip-packages

@@ -46,7 +46,7 @@
     data: "{{ item.data | default(omit) }}"
     url: "{{ item.url | default(omit) }}"
     state: "present"
-  with_items: galera_client_gpg_keys
+  with_items: "{{ galera_client_gpg_keys }}"
   register: add_keys
   until: add_keys|success
   retries: 5
@@ -64,7 +64,7 @@
   until: add_keys_fallback | success
   retries: 5
   delay: 2
-  with_items: galera_client_gpg_keys
+  with_items: "{{ galera_client_gpg_keys }}"
   when: add_keys|failed and (item.fallback_keyserver is defined or item.fallback_url is defined)
   tags:
     - galera-client-apt-keys
@@ -95,6 +95,6 @@
   until: install_packages | success
   retries: 5
   delay: 2
-  with_items: galera_client_packages
+  with_items: "{{ galera_client_packages }}"
   tags:
     - galera-client-apt-packages
