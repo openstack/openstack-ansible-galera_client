@@ -37,3 +37,4 @@ Example Playbook
           galera_root_password: secrete
           galera_root_user: root
           galera_client_drop_config_file: true
+
