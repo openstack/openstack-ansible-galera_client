@@ -34,7 +34,7 @@
 - name: Ensure host can talk to HTTPS apt repos
   apt:
     pkg: "apt-transport-https"
-    state: latest
+    state: "{{ galera_client_package_state }}"
     update_cache: yes
   tags:
     - galera-client-apt-packages
@@ -91,7 +91,7 @@
 - name: Install galera packages
   apt:
     pkg: "{{ item }}"
-    state: latest
+    state: "{{ galera_client_package_state }}"
   register: install_packages
   until: install_packages | success
   retries: 5
