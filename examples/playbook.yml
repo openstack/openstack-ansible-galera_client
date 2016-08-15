@@ -1,0 +1,9 @@
+- name: Install Galera client
+  hosts: all
+  user: root
+  roles:
+    - role: "openstack-ansible-galera_client"
+  galera_address: "10.0.0.1"
+  galera_root_password: secrete
+  galera_root_user: root
+  galera_client_drop_config_file: true
