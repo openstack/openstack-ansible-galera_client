@@ -1,7 +1,5 @@
 OpenStack-Ansible Galera Client
 ###############################
-:tags: openstack, cloud, ansible
-:category: \*nix
 
 Contributor Guidelines
 ^^^^^^^^^^^^^^^^^^^^^^

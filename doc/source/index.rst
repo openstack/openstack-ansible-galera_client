@@ -2,9 +2,6 @@
 OpenStack-Ansible Galera client
 ===============================
 
-:tags: openstack, galera, client, cloud, ansible
-:category: \*nix
-
 This Ansible role installs the MariaDB operating system and Python
 packages used to interact with and manage a Galera cluster.
 
