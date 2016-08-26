@@ -22,7 +22,7 @@ galera_client_repo:
   baseurl: "{{ galera_client_yum_repo_url }}"
   gpgkey: "https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
-galera_client_packages:
+galera_client_distro_packages:
   - bzip2-devel
   - gcc
   - gnupg2
