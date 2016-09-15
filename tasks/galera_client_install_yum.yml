@@ -13,6 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- name: Stats /etc/my.cnf.d
+  stat:
+    path: /etc/my.cnf.d
+  register: mycnfd_stat
+
+- name: Destroy my.cnf.d dir if is dir
+  file:
+    path: /etc/my.cnf.d
+    state: absent
+    force: true
+  when:
+    - mycnfd_stat.stat.isdir is defined
+    - mycnfd_stat.stat.isdir == True
+
 - name: Update the local file system CRUD
   file:
     src: "{{ item.src|default(omit) }}"
