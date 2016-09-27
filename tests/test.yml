@@ -30,7 +30,7 @@
         - { path: "/etc/my.cnf.d" }
         - { path: "/etc/my.cnf" }
   roles:
-    - role: "{{ rolename | basename }}"
+    - role: "galera_client"
       galera_address: "10.0.0.1"
       galera_root_password: secrete
       galera_root_user: root
@@ -62,7 +62,7 @@
         - { path: "/etc/my.cnf.d" }
         - { path: "/etc/my.cnf" }
   roles:
-    - role: "{{ rolename | basename }}"
+    - role: "galera_client"
       galera_address: "10.0.0.1"
       galera_root_password: secrete
       galera_root_user: root
