@@ -20,7 +20,7 @@ galera_client_repo:
   description: "MariaDB Repo"
   file: MariaDB
   baseurl: "{{ galera_client_yum_repo_url }}"
-  gpgkey: "https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
+  gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 galera_client_distro_packages:
   - bzip2-devel
@@ -39,4 +39,4 @@ galera_client_distro_packages:
 galera_client_gpg_keys:
   - key_name: 'RPM-GPG-KEY-MariaDB'
     keyserver: 'https://yum.mariadb.org'
-    fallback_keyserver: 'https://yum.mariadb.org'
+    fallback_keyserver: 'http://yum.mariadb.org'
