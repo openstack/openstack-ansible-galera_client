@@ -28,7 +28,7 @@ This role depends on the ``config_template`` Ansible module provided
 by `OpenStack-Ansible Plugins`_.
 
 .. _OpenStack-Ansible Plugins:
-   https://github.com/openstack/openstack-ansible-plugins
+   https://git.openstack.org/cgit/openstack/openstack-ansible-plugins
 
 Example playbook
 ~~~~~~~~~~~~~~~~
