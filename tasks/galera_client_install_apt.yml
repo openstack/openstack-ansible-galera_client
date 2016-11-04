@@ -57,19 +57,13 @@
   apt_repository:
     repo: "{{ galera_client_repo }}"
     state: present
+    update_cache: yes
   register: add_repo
   until: add_repo | success
   retries: 5
   delay: 2
   tags:
     - galera-client-repos
-
-- name: Update apt if needed
-  apt:
-    update_cache: yes
-  when: add_repo | changed
-  tags:
-    - galera-client-apt-packages
 
 - name: Install galera packages
   apt:
