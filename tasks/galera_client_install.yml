@@ -27,7 +27,7 @@
 
 - name: Install pip packages
   pip:
-    name: "{{ galera_client_pip_packages | join(' ') }}"
+    name: "{{ galera_client_pip_packages }}"
     state: "{{ galera_client_pip_package_state }}"
     extra_args: >-
       {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
