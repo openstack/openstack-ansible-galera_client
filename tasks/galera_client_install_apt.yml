@@ -74,5 +74,6 @@
   retries: 5
   delay: 2
   with_items: "{{ galera_client_distro_packages }}"
+  when: "{{ item | length > 0 }}"
   tags:
     - galera-client-apt-packages
