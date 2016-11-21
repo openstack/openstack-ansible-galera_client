@@ -53,9 +53,38 @@
   tags:
     - galera-client-apt-keys
 
-- name: Add galera repo(s)
+# TODO: Remove the following two tasks in Pike
+# They're only required during upgrades transitioning to a
+# statically named apt sources file.
+- name: Find old sources
+  command: >
+    grep -rnil maria /etc/apt/sources.list.d/ --exclude MariaDB.list
+  changed_when: false
+  failed_when: false
+  register: old_sources
+  tags:
+    - galera-client-repos
+
+- name: Remove old sources
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items: "{{ old_sources.stdout_lines | default([]) }}"
+  tags:
+    - galera-client-repos
+
+- name: Remove old galera repo
+  lineinfile:
+    dest: /etc/apt/sources.list.d/MariaDB.list
+    regexp: "^((?!{{ galera_client_repo }}).*)$"
+    state: absent
+  tags:
+    - galera-client-repos
+
+- name: Add galera repo
   apt_repository:
     repo: "{{ galera_client_repo }}"
+    filename: MariaDB
     state: present
     update_cache: yes
   register: add_repo

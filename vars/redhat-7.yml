@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-galera_client_yum_repo_url: "http://yum.mariadb.org/10.0/centos/7/x86_64"
+galera_client_yum_repo_url: "http://yum.mariadb.org/10.1/centos/7/x86_64"
 galera_client_repo:
   state: "present"
   name: MariaDB
