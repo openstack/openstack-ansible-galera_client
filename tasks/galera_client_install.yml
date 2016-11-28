@@ -16,12 +16,14 @@
 - include: galera_client_install_apt.yml
   when:
     - ansible_pkg_mgr == 'apt'
+    - galera_client_package_install | bool
   tags:
     - install-apt
 
 - include: galera_client_install_yum.yml
   when:
     - ansible_pkg_mgr == 'yum'
+    - galera_client_package_install | bool
   tags:
     - install-yum
 
@@ -36,5 +38,7 @@
   until: install_packages|success
   retries: 5
   delay: 2
+  when:
+    - galera_client_package_install | bool
   tags:
     - galera-client-pip-packages
