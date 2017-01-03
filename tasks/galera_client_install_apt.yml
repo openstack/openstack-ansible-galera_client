@@ -58,7 +58,7 @@
 # statically named apt sources file.
 - name: Find old sources
   command: >
-    grep -rnil maria /etc/apt/sources.list.d/ --exclude MariaDB.list
+    grep -rnil maria /etc/apt/sources.list.d/ --exclude {{ mariadb_repo_filename }}.list
   changed_when: false
   failed_when: false
   register: old_sources
@@ -84,7 +84,7 @@
 - name: Add galera repo
   apt_repository:
     repo: "{{ galera_client_repo }}"
-    filename: MariaDB
+    filename: "{{ mariadb_repo_filename }}"
     state: present
     update_cache: yes
   register: add_repo

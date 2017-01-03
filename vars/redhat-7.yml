@@ -18,7 +18,7 @@ galera_client_repo:
   state: "present"
   name: MariaDB
   description: "MariaDB Repo"
-  file: MariaDB
+  file: "{{ mariadb_repo_filename }}"
   baseurl: "{{ galera_client_yum_repo_url }}"
   gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 

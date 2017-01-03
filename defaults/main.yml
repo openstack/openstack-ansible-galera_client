@@ -37,3 +37,5 @@ galera_client_fatal_deprecations: false
 
 ## Tunable overrides
 galera_client_my_cnf_overrides: {}
+
+mariadb_repo_filename: "MariaDB"
