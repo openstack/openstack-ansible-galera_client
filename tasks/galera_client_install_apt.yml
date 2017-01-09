@@ -75,7 +75,7 @@
 
 - name: Remove old galera repo
   lineinfile:
-    dest: /etc/apt/sources.list.d/MariaDB.list
+    dest: /etc/apt/sources.list.d/{{ mariadb_repo_filename }}.list
     regexp: "^((?!{{ galera_client_repo }}).*)$"
     state: absent
   tags:
