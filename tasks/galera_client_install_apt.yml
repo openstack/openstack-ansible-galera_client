@@ -73,6 +73,7 @@
 - name: Add galera repo(s)
   apt_repository:
     repo: "{{ galera_client_repo }}"
+    filename: "{{ mariadb_repo_filename | default(omit) }}"
     state: present
   register: add_repo
   until: add_repo | success
