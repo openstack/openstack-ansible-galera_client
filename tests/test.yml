@@ -37,14 +37,18 @@
       galera_client_drop_config_file: false
   post_tasks:
     - name: Check that the mysql command is present
-      command: which mysql
+      find:
+        paths: "{{ ansible_env.PATH | regex_replace(':',',') }}"
+        patterns: "mysql"
+      register: mysql
     - name: Check .my.cnf existence
       stat:
         path: /root/.my.cnf
       register: mycnf
-    - name: Client config file .my.cnf should not exist
+    - name: mysql command should exist and client config file .my.cnf should not
       assert:
         that:
+          - "mysql.matched > 0"
           - "not mycnf.stat.exists"
 
 - name: Playbook for role testing
@@ -69,12 +73,16 @@
       galera_client_drop_config_file: true
   post_tasks:
     - name: Check that the mysql command is present
-      command: which mysql
+      find:
+        paths: "{{ ansible_env.PATH | regex_replace(':',',') }}"
+        patterns: "mysql"
+      register: mysql
     - name: Check .my.cnf existence
       stat:
         path: /root/.my.cnf
       register: mycnf
-    - name: Client config file .my.cnf should exist
+    - name: mysql command and client config file .my.cnf should exist
       assert:
         that:
+          - "mysql.matched > 0"
           - "mycnf.stat.exists"

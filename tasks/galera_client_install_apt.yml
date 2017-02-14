@@ -57,19 +57,20 @@
 # They're only required during upgrades transitioning to a
 # statically named apt sources file.
 - name: Find old sources
-  command: >
-    grep -rnil maria /etc/apt/sources.list.d/ --exclude {{ mariadb_repo_filename }}.list
-  changed_when: false
-  failed_when: false
+  find:
+    path: "/etc/apt/sources.list.d/"
+    patterns: "^(?!{{ mariadb_repo_filename }})(.+)|(.+)(?<!{{ mariadb_repo_filename }})\\.list$"
+    contains: "^.*maria.*$"
+    use_regex: true
   register: old_sources
   tags:
     - galera-client-repos
 
 - name: Remove old sources
   file:
-    path: "{{ item }}"
+    path: "{{ item.path }}"
     state: absent
-  with_items: "{{ old_sources.stdout_lines | default([]) }}"
+  with_items: "{{ old_sources.files | default([]) }}"
   tags:
     - galera-client-repos
 
