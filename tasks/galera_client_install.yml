@@ -13,16 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- include: galera_client_install_apt.yml
-  when:
-    - ansible_pkg_mgr == 'apt'
+- include: "galera_client_install_{{ ansible_pkg_mgr }}.yml"
   tags:
     - install-apt
-
-- include: galera_client_install_yum.yml
-  when:
-    - ansible_pkg_mgr == 'yum'
-  tags:
     - install-yum
 
 - name: Install pip packages
