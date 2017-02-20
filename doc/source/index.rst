@@ -2,8 +2,8 @@
 OpenStack-Ansible Galera client
 ===============================
 
-This Ansible role installs the MariaDB operating system and Python
-packages used to interact with and manage a Galera cluster.
+This Ansible role installs packages used to interact with and manage a Galera
+cluster.
 
 To clone or view the source code for this repository, visit the role repository
 for `galera_client <https://github.com/openstack/openstack-ansible-galera_client>`_.
