@@ -13,6 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_galera_client_repo_url: "http://download.opensuse.org/repositories/server:/database/openSUSE_Leap_{{ ansible_distribution_version }}"
+galera_client_zypper_repo:
+  - name: "OBS:server_database"
+    uri: "{{ galera_client_repo_url }}"
+
 galera_client_distro_packages:
   - libbz2-devel
   - gcc
