@@ -17,6 +17,9 @@
 galera_address: 127.0.0.1
 galera_root_user: root
 
+# Set the URL for the MariaDB repository
+galera_client_repo_url: "{{ galera_repo_url | default(_galera_client_repo_url) }}"
+
 ## APT Cache Options
 cache_timeout: 600
 
