@@ -13,13 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-galera_client_yum_repo_url: "http://yum.mariadb.org/10.0/centos/7/x86_64"
+# TODO(odyssey4me):
+# The use of 'galera_client_yum_repo_url' below is for backwards compatibility
+# to settings released in Newton. It can be removed in Queens.
+_galera_client_repo_url: "{{ galera_client_yum_repo_url | default('http://yum.mariadb.org/10.0/centos/7/x86_64') }}"
 galera_client_repo:
   state: "present"
   name: MariaDB
   description: "MariaDB Repo"
   file: MariaDB
-  baseurl: "{{ galera_client_yum_repo_url }}"
+  baseurl: "{{ galera_client_repo_url }}"
   gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 galera_client_distro_packages:
