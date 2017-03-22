@@ -42,3 +42,11 @@ galera_client_fatal_deprecations: false
 galera_client_my_cnf_overrides: {}
 
 mariadb_repo_filename: "MariaDB"
+
+# SSL support
+galera_use_ssl: false
+# The path where to store the database server CA certificate
+galera_ssl_ca_cert: /etc/ssl/certs/galera-ca.pem
+# The path to Galera CA certificate file on the deployment host
+galera_user_ssl_ca_cert: /etc/openstack_deploy/self_signed_certs/galera-ca.pem
+
