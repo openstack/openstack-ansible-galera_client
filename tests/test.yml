@@ -16,6 +16,8 @@
 - name: Playbook for role testing
   hosts: localhost
   connection: local
+  user: root
+  become: true
   pre_tasks:
     # These directories are removed because the gate job has them in
     #  the base image.
@@ -54,6 +56,8 @@
 - name: Playbook for role testing
   hosts: localhost
   connection: local
+  user: root
+  become: true
   pre_tasks:
     - name: Remove local mysql directories if they exist
       file:
