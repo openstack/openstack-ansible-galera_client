@@ -21,6 +21,23 @@
     - install-yum
     - install-zypper
 
+- name: Install galera distro packages
+  package:
+    name: "{{ galera_client_distro_packages }}"
+    state: "{{ galera_client_package_state }}"
+    update_cache: "{{ (ansible_pkg_mgr in ['apt', 'zypper']) | ternary('yes', omit) }}"
+    cache_valid_time: "{{ (ansible_pkg_mgr == 'apt') | ternary(cache_timeout, omit) }}"
+  register: install_packages
+  until: install_packages | success
+  retries: 5
+  delay: 2
+  when:
+    - galera_client_package_install | bool
+  tags:
+    - galera-client-apt-packages
+    - galera-client-yum-packages
+    - galera-client-zypper-packages
+
 - name: Install pip packages
   pip:
     name: "{{ galera_client_pip_packages }}"

@@ -94,16 +94,3 @@
   delay: 2
   tags:
     - galera-client-repos
-
-- name: Install galera packages
-  apt:
-    pkg: "{{ item }}"
-    state: "{{ galera_client_package_state }}"
-  register: install_packages
-  until: install_packages | success
-  retries: 5
-  delay: 2
-  with_items: "{{ galera_client_distro_packages }}"
-  when: "{{ item | length > 0 }}"
-  tags:
-    - galera-client-apt-packages
