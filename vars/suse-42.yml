@@ -24,7 +24,6 @@ galera_client_distro_packages:
   - gpg2
   - libaio-devel
   - libstdc++-devel
-  - libgcc_s1
   - libgcrypt-devel
   - mariadb-client
   - libmysqlclient-devel
