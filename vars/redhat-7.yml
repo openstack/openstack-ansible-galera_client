@@ -35,6 +35,7 @@ galera_client_distro_packages:
   - libgcrypt
   - MariaDB-client
   - MariaDB-devel
+  - MariaDB-shared
   - openssl-devel
   - python-devel
 
