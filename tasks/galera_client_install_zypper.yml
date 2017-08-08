@@ -20,6 +20,6 @@
       repo: "{{ item.uri }}"
       auto_import_keys: yes
   register: zypper_repository_added
-  with_items: "{{ galera_client_zypper_repo }}"
+  with_items: "{{ galera_client_repo }}"
   tags:
     - galera-repos

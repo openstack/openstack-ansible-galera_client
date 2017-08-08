@@ -20,6 +20,9 @@ galera_root_user: root
 # Set the URL for the MariaDB repository
 galera_client_repo_url: "{{ galera_repo_url | default(_galera_client_repo_url) }}"
 
+# Set the repo information for the MariaDB repository
+galera_client_repo: "{{ _galera_client_repo }}"
+
 ## APT Cache Options
 cache_timeout: 600
 
