@@ -17,7 +17,7 @@
 # The use of 'galera_client_yum_repo_url' below is for backwards compatibility
 # to settings released in Newton. It can be removed in Queens.
 _galera_client_repo_url: "{{ galera_client_yum_repo_url | default('http://yum.mariadb.org/10.0/centos/7/x86_64') }}"
-galera_client_repo:
+_galera_client_repo:
   state: "present"
   name: MariaDB
   description: "MariaDB Repo"
@@ -39,7 +39,7 @@ galera_client_distro_packages:
   - python-devel
 
 # Galera GPG Keys
-galera_client_gpg_keys:
+_galera_client_gpg_keys:
   - key_name: 'RPM-GPG-KEY-MariaDB'
     keyserver: 'https://yum.mariadb.org'
     fallback_keyserver: 'http://yum.mariadb.org'
