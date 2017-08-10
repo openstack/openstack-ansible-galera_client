@@ -23,6 +23,9 @@ galera_client_repo_url: "{{ galera_repo_url | default(_galera_client_repo_url) }
 # Set the repo information for the MariaDB repository
 galera_client_repo: "{{ _galera_client_repo }}"
 
+# Set the gpg keys needed to be imported
+galera_client_gpg_keys: "{{ _galera_client_gpg_keys | default([]) }}"
+
 ## APT Cache Options
 cache_timeout: 600
 

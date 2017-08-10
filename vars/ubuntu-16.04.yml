@@ -35,7 +35,7 @@ galera_client_distro_packages:
   - python-dev
 
 # Galera GPG Keys
-galera_client_gpg_keys:
+_galera_client_gpg_keys:
   - key_name: 'mariadb'
     keyserver: 'hkp://keyserver.ubuntu.com:80'
     fallback_keyserver: 'hkp://p80.pool.sks-keyservers.net:80'
