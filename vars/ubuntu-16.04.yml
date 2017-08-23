@@ -41,4 +41,3 @@ _galera_client_gpg_keys:
     fallback_keyserver: 'hkp://p80.pool.sks-keyservers.net:80'
     hash_id: '0xF1656F24C74CD1D8'
 
-galera_client_package_pins: [{ package: "*", release: MariaDB, priority: "1001" }]
