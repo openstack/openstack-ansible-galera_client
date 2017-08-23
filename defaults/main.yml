@@ -26,6 +26,9 @@ galera_client_repo: "{{ _galera_client_repo }}"
 # Set the gpg keys needed to be imported
 galera_client_gpg_keys: "{{ _galera_client_gpg_keys }}"
 
+# This is only applied if the ansible_pkg_mgr is 'apt'
+galera_client_distro_package_pins: [{ package: "*", release: MariaDB, priority: "1001" }]
+
 ## APT Cache Options
 cache_timeout: 600
 
