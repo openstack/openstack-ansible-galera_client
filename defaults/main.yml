@@ -38,8 +38,6 @@ galera_client_package_state: "latest"
 
 galera_client_drop_config_file: false
 
-galera_client_distro_package_pins: []
-
 galera_client_pip_packages:
   - MySQL-python
 
