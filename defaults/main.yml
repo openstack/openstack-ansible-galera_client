@@ -57,3 +57,6 @@ galera_ssl_ca_cert: /etc/ssl/certs/galera-ca.pem
 # The path to Galera CA certificate file on the deployment host
 galera_user_ssl_ca_cert: /etc/openstack_deploy/self_signed_certs/galera-ca.pem
 
+## Set default mirror for openSUSE repositories
+# NOTE(hwoarang): Ensure that the full path to the 'opensuse' directory is used.
+#galera_client_opensuse_mirror_obs_url: "http://widehat.opensuse.org"
