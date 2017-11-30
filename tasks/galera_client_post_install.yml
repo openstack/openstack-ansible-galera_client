@@ -25,15 +25,3 @@
   when: galera_client_drop_config_file
   tags:
     - galera-client-user-config
-
-- name: Distribute Galera ssl CA cert
-  copy:
-    dest: "{{ galera_ssl_ca_cert }}"
-    src: "{{ galera_user_ssl_ca_cert }}"
-    owner: "root"
-    group: "root"
-    mode: "0644"
-  when:
-    - galera_use_ssl | bool
-  tags:
-    - galera-client-user-config

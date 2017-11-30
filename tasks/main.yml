@@ -29,3 +29,7 @@
     - galera-client-install
 
 - include: galera_client_post_install.yml
+
+- include: galera_client_ssl.yml
+  when:
+    - galera_use_ssl | bool
