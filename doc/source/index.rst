@@ -27,6 +27,8 @@ To use this role, define the following variables:
 Dependencies
 ~~~~~~~~~~~~
 
+This role needs pip >= 7.1 installed on the target host.
+
 This role depends on the ``config_template`` Ansible module provided
 by `OpenStack-Ansible Plugins`_.
 

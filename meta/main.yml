@@ -41,4 +41,3 @@ dependencies:
     apt_package_pinning_file_name: "galera_client_pin.pref"
     when:
       - ansible_pkg_mgr == 'apt'
-  - pip_install
