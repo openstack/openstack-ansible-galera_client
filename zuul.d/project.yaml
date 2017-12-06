@@ -23,6 +23,9 @@
         - openstack-ansible-functional-ubuntu-xenial
         - openstack-ansible-ssl-galera_server-ubuntu-xenial
         - openstack-ansible-functional-galera_server-ubuntu-xenial
+    experimental:
+      jobs:
+        - openstack-ansible-integrated-deploy-aio
     gate:
       jobs:
         - openstack-ansible-linters
