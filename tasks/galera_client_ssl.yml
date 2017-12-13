@@ -13,29 +13,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Get ca key contents
+- name: Get Galera ssl CA cert contents
   slurp:
     src: "{{ galera_ssl_ca_cert }}"
   register: galera_ca
-  changed_when: false
   failed_when: false
   delegate_to: "{{ galera_ssl_server }}"
   when:
     - galera_user_ssl_ca_cert is not defined
 
-- name: Check for ca key get failure
+- name: Check for Galera ssl CA cert get failure
   debug:
     msg: >
-      The key retrieval task failed or no CA key was found. Check the file
+      The cert retrieval task failed or no CA cert was found. Check the file
       "{{ galera_ssl_ca_cert }}" on server "{{ galera_ssl_server }}" before
       trying again.
   when:
-    - not galera_ca | success
+    - galera_ca.content is not defined
 
 - name: Distribute Galera ssl CA cert (SERVER)
   copy:
     content: "{{ galera_ca.content | b64decode }}"
-    src: "{{ galera_ssl_ca_cert }}"
+    dest: "{{ galera_ssl_ca_cert }}"
     owner: "root"
     group: "root"
     mode: "0644"
@@ -45,8 +44,8 @@
 
 - name: Distribute Galera ssl CA cert (USER)
   copy:
-    dest: "{{ galera_ssl_ca_cert }}"
     src: "{{ galera_user_ssl_ca_cert }}"
+    dest: "{{ galera_ssl_ca_cert }}"
     owner: "root"
     group: "root"
     mode: "0644"

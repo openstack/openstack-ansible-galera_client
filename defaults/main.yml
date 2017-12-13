@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+galera_cluster_members: "{{ groups['galera_all'] }}"
+
 # Default galera connection address
 galera_address: 127.0.0.1
 galera_root_user: root
@@ -58,7 +60,7 @@ galera_use_ssl: false
 # This server is used when pulling an ssl cert onto a given host when a user
 # defined key is not present. By default this will try and pull from the
 # "galera_server" group and fall back to localhost.
-galera_ssl_server: "{{ (groups['galera_server'] | default(['localhost']))[0] }}"
+galera_ssl_server: "{{ (galera_cluster_members | default(['localhost']))[0] }}"
 # The path where to store the database server CA certificate
 galera_ssl_ca_cert: /etc/ssl/certs/galera-ca.pem
 # The path to Galera CA certificate file on the deployment host
