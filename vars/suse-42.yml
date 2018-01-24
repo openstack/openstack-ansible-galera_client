@@ -13,10 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_galera_client_repo_url: "{{ galera_client_opensuse_mirror_obs_url | default('http://download.opensuse.org') }}/repositories/server:/database/openSUSE_Leap_{{ ansible_distribution_version }}"
+_galera_client_repo_url: "http://yum.mariadb.org/{{ galera_client_major_version }}/sles/12/x86_64"
 _galera_client_repo:
-  - name: "OBS:server_database"
-    uri: "{{ galera_client_repo_url }}"
+  name: MariaDB
+  description: "MariaDB Repo"
+  baseurl: "{{ galera_client_repo_url }}"
 
 galera_client_distro_packages:
   - libbz2-devel
@@ -25,7 +26,14 @@ galera_client_distro_packages:
   - libaio-devel
   - libstdc++-devel
   - libgcrypt-devel
-  - mariadb-client
-  - libmysqlclient-devel
   - libopenssl-devel
+  - MariaDB-client
+  - MariaDB-devel
+  - MariaDB-shared
   - python-devel
+
+# Galera GPG Keys
+_galera_client_gpg_keys:
+  - key_name: 'RPM-GPG-KEY-MariaDB'
+    keyserver: 'https://yum.mariadb.org'
+    fallback_keyserver: 'http://yum.mariadb.org'
