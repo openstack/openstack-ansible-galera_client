@@ -13,11 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Remove conflicting distro packages
-  package:
-    name: "{{ galera_client_mariadb_distro_packages_remove | default([]) }}"
-    state: absent
-
 - include: "galera_client_install_{{ ansible_pkg_mgr }}.yml"
   when:
     - galera_client_package_install | bool
