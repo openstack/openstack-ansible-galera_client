@@ -39,14 +39,6 @@ galera_client_distro_packages:
   - openssl-devel
   - python-devel
 
-# Conflicting packages with those from the MariaDB repository
-galera_client_mariadb_distro_packages_remove:
-  - mariadb-common
-  - mariadb-config
-  - mariadb-server
-  - mariadb-libs
-  - mariadb
-
 # Galera GPG Keys
 _galera_client_gpg_keys:
   - key_name: 'RPM-GPG-KEY-MariaDB'
