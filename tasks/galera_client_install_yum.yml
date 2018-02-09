@@ -86,3 +86,13 @@
     - "{{ galera_client_repo }}"
   tags:
     - galera-repos
+
+# NOTE(hwoarang): MariaDB repository is prioritized at 99 by default
+# and that allows yum to install mariadb client from the RDO repos, which
+# is not good. This task ensures that the following tasks will choose
+# MariaDB repo as the highest priority.
+- name: Ensure MariaDB repository takes highest priority
+  command: |
+      yum-config-manager
+        --enable MariaDB
+        --setopt="MariaDB.priority=25"
