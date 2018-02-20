@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_galera_client_repo_url: "https://downloads.mariadb.com/MariaDB/mariadb-{{ galera_client_major_version }}.{{ galera_client_minor_version }}/yum/opensuse42-amd64"
+_galera_client_repo_url: "http://downloads.mariadb.com/MariaDB/mariadb-{{ galera_client_major_version }}.{{ galera_client_minor_version }}/yum/opensuse42-amd64"
 _galera_client_repo:
   name: MariaDB
   description: "MariaDB Repo"
