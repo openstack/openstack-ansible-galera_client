@@ -87,9 +87,17 @@
     repo: "{{ galera_client_repo }}"
     filename: "{{ mariadb_repo_filename }}"
     state: present
-    update_cache: yes
+    update_cache: no
   register: add_repo
-  until: add_repo | success
+  tags:
+    - galera-client-repos
+
+- name: Update Apt cache
+  apt:
+    update_cache: yes
+  when: add_repo | changed
+  register: update_apt_cache
+  until: update_apt_cache | success
   retries: 5
   delay: 2
   tags:
