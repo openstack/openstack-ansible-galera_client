@@ -29,8 +29,24 @@
       tox_env: ssl
 
 - job:
+    name: openstack-ansible-ssl-galera_server-opensuse-423
+    parent: openstack-ansible-galera_server
+    nodeset: opensuse-423
+    voting: false
+    vars:
+      tox_env: ssl
+
+- job:
     name: openstack-ansible-functional-galera_server-ubuntu-xenial
     parent: openstack-ansible-galera_server
+    voting: false
+    vars:
+      tox_env: functional
+
+- job:
+    name: openstack-ansible-functional-galera_server-opensuse-423
+    parent: openstack-ansible-galera_server
+    nodeset: opensuse-423
     voting: false
     vars:
       tox_env: functional
