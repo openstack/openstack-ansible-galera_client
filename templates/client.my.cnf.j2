@@ -2,7 +2,7 @@
 
 [client]
 host={% if inventory_hostname in galera_cluster_members %}
-127.0.0.1
+localhost
 {% else %}
 {{ galera_address }}
 {% endif %}
