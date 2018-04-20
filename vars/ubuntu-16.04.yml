@@ -24,7 +24,6 @@ galera_client_distro_packages:
   - build-essential
   - libaio1
   - libc6
-  - libdbd-mysql-perl
   - libgcc1
   - libgcrypt20
   - libmariadbclient-dev
