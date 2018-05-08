@@ -55,6 +55,13 @@
       tags:
         - galera-client-apt-keys
 
+- name: Ensure the sources.list.d folder exists
+  file:
+    path: "/etc/apt/sources.list.d/"
+    state: directory
+  tags:
+    - galera-client-repos
+
 # TODO: Remove the following two tasks in Pike
 # They're only required during upgrades transitioning to a
 # statically named apt sources file.

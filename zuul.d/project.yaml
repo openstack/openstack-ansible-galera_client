@@ -18,6 +18,7 @@
         - openstack-ansible-linters
         - openstack-ansible-functional-centos-7
         - openstack-ansible-functional-opensuse-423
+        - openstack-ansible-functional-ubuntu-bionic
         - openstack-ansible-functional-ubuntu-xenial
         - openstack-ansible-ssl-galera_server-opensuse-423
         - openstack-ansible-ssl-galera_server-ubuntu-xenial
@@ -31,4 +32,5 @@
         - openstack-ansible-linters
         - openstack-ansible-functional-centos-7
         - openstack-ansible-functional-opensuse-423
+        - openstack-ansible-functional-ubuntu-bionic
         - openstack-ansible-functional-ubuntu-xenial
