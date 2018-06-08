@@ -20,17 +20,7 @@ _galera_client_repo:
   baseurl: "{{ galera_client_repo_url }}"
 
 galera_client_distro_packages:
-  - libbz2-devel
-  - gcc
-  - gpg2
-  - libaio-devel
-  - libstdc++-devel
-  - libgcrypt-devel
-  - libopenssl-devel
   - MariaDB-client
-  - MariaDB-devel
-  - MariaDB-shared
-  - python-devel
 
 # Galera GPG Keys
 _galera_client_gpg_keys:

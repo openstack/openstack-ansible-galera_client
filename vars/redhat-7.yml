@@ -26,18 +26,7 @@ _galera_client_repo:
   gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 galera_client_distro_packages:
-  - bzip2-devel
-  - gcc
-  - gnupg2
-  - libaio
-  - libstdc++
-  - libgcc
-  - libgcrypt
   - MariaDB-client
-  - MariaDB-devel
-  - MariaDB-shared
-  - openssl-devel
-  - python-devel
 
 # Galera GPG Keys
 _galera_client_gpg_keys:
