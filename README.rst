@@ -16,5 +16,8 @@ Documentation for the project can be found at:
 
 Role dependencies and requirements are on this documentation page.
 
+Release notes for the project can be found at:
+  https://docs.openstack.org/releasenotes/openstack-ansible-galera_client/
+
 The project home is at:
   https://launchpad.net/openstack-ansible
