@@ -19,8 +19,10 @@ _galera_client_repo:
   description: "MariaDB Repo"
   baseurl: "{{ galera_client_repo_url }}"
 
+# MariaDB-devel is required for mysql_config, which is subsequently required for pip install of MySQL-python
 galera_client_distro_packages:
   - MariaDB-client
+  - MariaDB-devel
 
 # Galera GPG Keys
 _galera_client_gpg_keys:
