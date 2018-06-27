@@ -18,6 +18,7 @@ galera_address: 127.0.0.1
 galera_root_user: root
 
 # Set the URL for the MariaDB repository
+galera_repo_host: downloads.mariadb.com
 galera_client_repo_url: "{{ galera_repo_url | default(_galera_client_repo_url) }}"
 
 # Set the major version to use for the galera repo
