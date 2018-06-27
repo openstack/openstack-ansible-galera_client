@@ -13,10 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# TODO(odyssey4me):
-# The use of 'galera_client_yum_repo_url' below is for backwards compatibility
-# to settings released in Newton. It can be removed in Queens.
-_galera_client_repo_url: "{{ galera_client_yum_repo_url | default('http://downloads.mariadb.com/MariaDB/mariadb-' ~ galera_client_major_version ~ '.' ~ galera_client_minor_version ~ '/yum/centos7-amd64/') }}"
+_galera_client_repo_url: "http://{{ galera_repo_host }}/MariaDB/mariadb-{{ galera_client_major_version }}.{{ galera_client_minor_version }}/yum/centos7-amd64/"
 _galera_client_repo:
   state: "present"
   name: MariaDB
