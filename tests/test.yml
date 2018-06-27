@@ -19,6 +19,7 @@
   user: root
   become: true
   pre_tasks:
+    - include: "common/common-tasks/test-set-nodepool-vars.yml"
     # These directories are removed because the gate job has them in
     #  the base image.
     - name: Remove local mysql directories if they exist
