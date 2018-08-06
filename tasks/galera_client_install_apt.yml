@@ -19,6 +19,10 @@
     state: "{{ galera_client_package_state }}"
     update_cache: yes
     cache_valid_time: "{{ cache_timeout }}"
+  register: apt_transport_https_check
+  until: apt_transport_https_check is success
+  retries: 5
+  delay: 2
   tags:
     - galera-client-apt-packages
 
