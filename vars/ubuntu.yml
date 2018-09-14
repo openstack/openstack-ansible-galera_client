@@ -20,7 +20,7 @@ _galera_client_repo: "deb {{ galera_client_repo_url }} {{ ansible_distribution_r
 # libmariadbclient-dev is required for mysql_config, which is subsequently required for pip install of MySQL-python
 galera_client_distro_packages:
   - "mariadb-client-core-{{ galera_client_major_version }}"
-  - libmariadbclient-dev
+  - libmariadb-dev
 
 # Galera GPG Keys
 _galera_client_gpg_keys:
