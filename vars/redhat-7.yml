@@ -22,6 +22,10 @@ _galera_client_repo:
   baseurl: "{{ galera_client_repo_url }}"
   gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
+# Packages conflicting with MariaDB
+galera_client_distro_remove_packages:
+  - mariadb-common-3
+
 # MariaDB-devel is required for mysql_config, which is subsequently required for pip install of MySQL-python
 galera_client_distro_packages:
   - MariaDB-client
