@@ -23,8 +23,10 @@ _galera_client_repo:
   gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 # Packages conflicting with MariaDB
+# These are evaluated using case-sensitivity!
 galera_client_distro_remove_packages:
-  - mariadb-common-3
+  - mariadb-common
+  - mariadb-config
 
 # MariaDB-devel is required for mysql_config, which is subsequently required for pip install of MySQL-python
 galera_client_distro_packages:
