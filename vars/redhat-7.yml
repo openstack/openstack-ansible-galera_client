@@ -25,6 +25,12 @@ _galera_client_repo:
   baseurl: "{{ galera_client_repo_url }}"
   gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
+# Packages conflicting with MariaDB
+# These are evaluated using case-sensitivity!
+galera_client_distro_remove_packages:
+  - mariadb-common
+  - mariadb-config
+
 galera_client_distro_packages:
   - bzip2-devel
   - gcc
