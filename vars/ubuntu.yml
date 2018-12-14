@@ -24,7 +24,6 @@ galera_client_distro_packages:
 
 # Galera GPG Keys
 _galera_client_gpg_keys:
-  - key_name: 'mariadb'
-    keyserver: 'hkp://keyserver.ubuntu.com:80'
-    fallback_keyserver: 'hkp://p80.pool.sks-keyservers.net:80'
-    hash_id: '0xF1656F24C74CD1D8'
+  # MariaDB Signing Key <signing-key@mariadb.org>
+  - id: C74CD1D8
+    file: /etc/ssl/mariadb-key

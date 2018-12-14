@@ -41,33 +41,26 @@
   tags:
     - galera-config
 
-- name: Add galera gpg-keys
-  block:
-    - name: Add keys (primary keyserver)
-      rpm_key:
-        state: present
-        key: "{{ item.keyserver }}/{{ item.key_name }}"
-      register: add_keys
-      until: add_keys is success
-      retries: 5
-      delay: 2
-      with_items: "{{ galera_client_gpg_keys }}"
-      tags:
-        - galera-gpg-keys
+- name: If a keyfile is provided, copy the gpg keyfile to the key location
+  copy:
+    src: "gpg/{{ item.key | basename }}"
+    dest: "{{ item.key }}"
+    mode: '0644'
+  with_items: "{{ galera_client_gpg_keys }}"
+  tags:
+    - galera-gpg-keys
 
-  rescue:
-    - name: Add keys (fallback keyserver)
-      rpm_key:
-        state: present
-        key: "{{ item.fallback_keyserver }}/{{ item.key_name }}"
-      register: add_keys
-      until: add_keys is success
-      retries: 5
-      delay: 2
-      with_items: "{{ galera_client_gpg_keys }}"
-      when: item.fallback_keyserver is defined
-      tags:
-        - galera-gpg-keys
+- name: Install gpg keys
+  rpm_key: "{{ key }}"
+  with_items: "{{ galera_client_gpg_keys }}"
+  loop_control:
+    loop_var: key
+  register: _add_zypper_keys
+  until: _add_zypper_keys is success
+  retries: 5
+  delay: 2
+  tags:
+    - galera-gpg-keys
 
 - name: Add galera repo
   zypper_repository:
