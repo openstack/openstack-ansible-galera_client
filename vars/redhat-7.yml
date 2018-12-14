@@ -20,7 +20,6 @@ _galera_client_repo:
   description: "MariaDB Repo"
   file: "{{ mariadb_repo_filename }}"
   baseurl: "{{ galera_client_repo_url }}"
-  gpgkey: "http://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
 
 # Packages conflicting with MariaDB
 # These are evaluated using case-sensitivity!
@@ -35,6 +34,5 @@ galera_client_distro_packages:
 
 # Galera GPG Keys
 _galera_client_gpg_keys:
-  - key_name: 'RPM-GPG-KEY-MariaDB'
-    keyserver: 'https://yum.mariadb.org'
-    fallback_keyserver: 'http://yum.mariadb.org'
+  # MariaDB Package Signing Key <package-signing-key@mariadb.org>
+  - key: /etc/pki/rpm-gpg/RPM-GPG-KEY-MariaDB
