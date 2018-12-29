@@ -13,34 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Stats /etc/my.cnf.d
-  stat:
-    path: /etc/my.cnf.d
-  register: mycnfd_stat
-
-- name: Destroy my.cnf.d dir if is dir
-  file:
-    path: /etc/my.cnf.d
-    state: absent
-    force: true
-  when:
-    - mycnfd_stat.stat.isdir is defined
-    - mycnfd_stat.stat.isdir == True
-
-- name: Update the local file system CRUD
-  file:
-    src: "{{ item.src|default(omit) }}"
-    path: "{{ item.path }}"
-    state: "{{ item.state }}"
-    force: "{{ item.force|default(omit) }}"
-  with_items:
-    - { path: "/etc/mysql", state: "directory" }
-    - { path: "/etc/mysql/conf.d", state: "directory" }
-    - { src: "/etc/mysql/conf.d", path: "/etc/my.cnf.d", state: "link", force: true }
-    - { src: "/etc/mysql/my.cnf", path: "/etc/my.cnf", state: "link", force: true }
-  tags:
-    - galera-config
-
 - name: If a keyfile is provided, copy the gpg keyfile to the key location
   copy:
     src: "gpg/{{ item.key | basename }}"

@@ -20,18 +20,6 @@
   become: true
   pre_tasks:
     - include_tasks: "common/common-tasks/test-set-nodepool-vars.yml"
-    # These directories are removed because the gate job has them in
-    #  the base image.
-    - name: Remove local mysql directories if they exist
-      file:
-        path: "{{ item.path }}"
-        state: "absent"
-      with_items:
-        - { path: "/etc/mysql" }
-        - { path: "/etc/mysql/conf.d" }
-        - { path: "/usr/lib/galera" }
-        - { path: "/etc/my.cnf.d" }
-        - { path: "/etc/my.cnf" }
   roles:
     - role: "galera_client"
       galera_address: "10.0.0.1"
@@ -59,17 +47,6 @@
   connection: local
   user: root
   become: true
-  pre_tasks:
-    - name: Remove local mysql directories if they exist
-      file:
-        path: "{{ item.path }}"
-        state: "absent"
-      with_items:
-        - { path: "/etc/mysql" }
-        - { path: "/etc/mysql/conf.d" }
-        - { path: "/usr/lib/galera" }
-        - { path: "/etc/my.cnf.d" }
-        - { path: "/etc/my.cnf" }
   roles:
     - role: "galera_client"
       galera_address: "10.0.0.1"
