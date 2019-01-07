@@ -47,10 +47,30 @@
   tags:
     - galera-client-apt-keys
 
+# When updating the cache in the apt_repository
+# task, and the update fails, a retry does not
+# detect a change the second attempt and therefore
+# does not update the cache, resulting in a changed
+# repo config, but no updated cache. To work around
+# this bug we implement the change of repo config
+# and the cache update as two seperate tasks.
 - name: Add galera repo
   apt_repository:
     repo: "{{ galera_client_repo }}"
     filename: "{{ mariadb_repo_filename }}"
     state: present
+    update_cache: no
+  register: add_repo
+  tags:
+    - galera-client-repos
+
+- name: Update Apt cache
+  apt:
+    update_cache: yes
+  when: add_repo is changed
+  register: update_apt_cache
+  until: update_apt_cache is success
+  retries: 5
+  delay: 2
   tags:
     - galera-client-repos
