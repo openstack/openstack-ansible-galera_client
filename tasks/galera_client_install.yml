@@ -27,6 +27,10 @@
     state: "{{ galera_client_package_state }}"
     update_cache: "{{ (ansible_pkg_mgr in ['apt', 'zypper']) | ternary('yes', omit) }}"
     cache_valid_time: "{{ (ansible_pkg_mgr == 'apt') | ternary(cache_timeout, omit) }}"
+    newuse: "{{ (ansible_pkg_mgr == 'portage') | ternary('yes', omit) }}"
+    changed_use: "{{ (ansible_pkg_mgr == 'portage') | ternary('yes', omit) }}"
+    noreplace: "{{ (ansible_pkg_mgr == 'portage') | ternary('yes', omit) }}"
+    jobs: "{{ (ansible_pkg_mgr == 'portage') | ternary('4', omit) }}"
   register: install_packages
   until: install_packages is success
   retries: 5
@@ -35,5 +39,6 @@
     - galera_client_package_install | bool
   tags:
     - galera-client-apt-packages
+    - galera-client-portage-packages
     - galera-client-yum-packages
     - galera-client-zypper-packages
