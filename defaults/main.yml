@@ -24,8 +24,8 @@ galera_repo_host: downloads.mariadb.com
 galera_client_repo_url: "{{ galera_repo_url | default(_galera_client_repo_url) }}"
 
 # Set the major version to use for the galera repo
-galera_client_major_version: 10.2
-galera_client_minor_version: 17
+galera_client_major_version: 10.3
+galera_client_minor_version: 13
 
 # Set the repo information for the MariaDB repository
 galera_client_repo: "{{ _galera_client_repo }}"
