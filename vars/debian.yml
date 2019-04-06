@@ -14,7 +14,7 @@
 # limitations under the License.
 
 # Repositories
-_galera_client_repo_url: "http://{{ galera_repo_host }}/MariaDB/mariadb-{{ galera_client_major_version }}.{{ galera_client_minor_version }}/repo/ubuntu"
+_galera_client_repo_url: "http://{{ galera_repo_host }}/MariaDB/mariadb-{{ galera_client_major_version }}.{{ galera_client_minor_version }}/repo/{{ ansible_distribution | lower }}"
 _galera_client_repo: "deb {{ galera_client_repo_url }} {{ ansible_distribution_release }} main"
 
 galera_client_distro_packages:
