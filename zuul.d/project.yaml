@@ -15,13 +15,13 @@
 
 - project:
     templates:
-      - openstack-ansible-role-jobs
       - check-requirements
+      - openstack-ansible-deploy-aio_metal-jobs
+      - openstack-ansible-deploy-aio_distro_metal-jobs
+      - openstack-ansible-linters
       - publish-openstack-docs-pti
       - release-notes-jobs-python3
     check:
       jobs:
-        - openstack-ansible-ssl-galera_server-opensuse-423
+        - openstack-ansible-ssl-galera_server-opensuse-15
         - openstack-ansible-ssl-galera_server-ubuntu-xenial
-        - openstack-ansible-functional-galera_server-opensuse-423
-        - openstack-ansible-functional-galera_server-ubuntu-xenial
