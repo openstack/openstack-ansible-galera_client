@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_galera_opensuse_dir: "{{ (ansible_distribution_major_version == '15') | ternary(ansible_distribution_version | regex_replace('\\.', ''), ansible_distribution_major_version) }}"
+_galera_opensuse_dir: "{{ ansible_distribution_major_version }}"
 _galera_client_repo_url: "http://{{ galera_repo_host }}/MariaDB/mariadb-{{ galera_client_major_version }}.{{ galera_client_minor_version }}/yum/opensuse{{ _galera_opensuse_dir }}-amd64"
 _galera_client_repo:
   name: MariaDB
