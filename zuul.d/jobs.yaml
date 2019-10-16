@@ -24,7 +24,7 @@
 - job:
     name: openstack-ansible-ssl-galera_server-opensuse-15
     parent: openstack-ansible-galera_server
-    nodeset: opensuse-150
+    nodeset: opensuse-15
     voting: false
     vars:
       tox_env: ssl
