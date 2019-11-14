@@ -6,7 +6,7 @@ This Ansible role installs packages used to interact with and manage a Galera
 cluster.
 
 To clone or view the source code for this repository, visit the role repository
-for `galera_client <https://github.com/openstack/openstack-ansible-galera_client>`_.
+for `galera_client <https://opendev.org/openstack/openstack-ansible-galera_client>`_.
 
 Default variables
 ~~~~~~~~~~~~~~~~~
@@ -33,7 +33,7 @@ This role depends on the ``config_template`` Ansible module provided
 by `OpenStack-Ansible Plugins`_.
 
 .. _OpenStack-Ansible Plugins:
-   https://git.openstack.org/cgit/openstack/openstack-ansible-plugins
+   https://opendev.org/openstack/openstack-ansible-plugins
 
 Example playbook
 ~~~~~~~~~~~~~~~~
