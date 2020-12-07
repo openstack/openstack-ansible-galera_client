@@ -1,4 +1,0 @@
----
-upgrade:
-  - The role now uses the UNIX sockets to communicate to the server instead
-    of TCP.
